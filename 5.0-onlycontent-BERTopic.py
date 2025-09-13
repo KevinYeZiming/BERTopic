@@ -32,46 +32,64 @@ CHINESE_TONE_WORDS = {
 # --- 可视化配置类 ---
 class VisualizationConfig:
     """可视化配置类"""
-    def __init__(self):
-        self.save_visualizations = True
-        self.show_plots = False
-        self.create_topic_visualization = True
-        self.topic_viz_width = 1200
-        self.topic_viz_height = 800
-        self.create_barchart = True
-        self.barchart_top_n = 30
-        self.barchart_width = 1000
-        self.barchart_height = 700
-        self.create_hierarchy = True
-        self.hierarchy_top_n = 30
-        self.hierarchy_width = 1200
-        self.hierarchy_height = 800
-        self.create_heatmap = True
-        self.heatmap_top_n = 30
-        self.heatmap_width = 800
-        self.heatmap_height = 600
-        self.create_document_distribution = True
-        self.dist_min_probability = 0.001
-        self.dist_width = 1000
-        self.dist_height = 600
-        self.create_document_visualization = True
-        self.doc_viz_width = 1200
-        self.doc_viz_height = 800
-        self.doc_viz_sample_size = 4000
-        self.create_time_series = False
-        self.time_series_bins = 20
-        self.time_series_top_n = 10
-        self.time_series_width = 1200
-        self.time_series_height = 600
-        self.min_time_points = 50
-        self.create_dynamic_topics = False
-        self.dynamic_topics_count = 8
-        self.normalize_frequency = True
-        self.save_topic_info = True
-        self.save_representative_docs = True
-        self.representative_docs_count = 5
-        self.save_detailed_results = True
-
+def __init__(self):
+    # 可视化文件保存控制
+    self.save_visualizations = True  # 是否将生成的可视化结果保存为文件（True/False）
+    self.show_plots = False  # 是否在运行时直接显示可视化图表（True/False）
+    
+    # 主题可视化配置
+    self.create_topic_visualization = True  # 是否生成主题间关系的2D可视化（通常使用UMAP降维）
+    self.topic_viz_width = 1200  # 主题可视化图像的宽度（像素）
+    self.topic_viz_height = 800  # 主题可视化图像的高度（像素）
+    
+    # 主题词条形图配置
+    self.create_barchart = True  # 是否生成每个主题的关键词条形图
+    self.barchart_top_n = 30  # 每个条形图中显示的关键词数量
+    self.barchart_width = 1000  # 条形图宽度（像素）
+    self.barchart_height = 700  # 条形图高度（像素）
+    
+    # 主题层次结构图配置
+    self.create_hierarchy = True  # 是否生成主题层次聚类树状图
+    self.hierarchy_top_n = 30  # 层次图中显示的主题数量
+    self.hierarchy_width = 1200  # 层次图宽度（像素）
+    self.hierarchy_height = 800  # 层次图高度（像素）
+    
+    # 主题相似度热力图配置
+    self.create_heatmap = True  # 是否生成主题间相似度的热力图
+    self.heatmap_top_n = 30  # 热力图中显示的主题数量
+    self.heatmap_width = 800  # 热力图宽度（像素）
+    self.heatmap_height = 600  # 热力图高度（像素）
+    
+    # 文档分布可视化配置
+    self.create_document_distribution = True  # 是否生成文档主题概率分布图
+    self.dist_min_probability = 0.001  # 显示文档的最低主题概率阈值
+    self.dist_width = 1000  # 分布图宽度（像素）
+    self.dist_height = 600  # 分布图高度（像素）
+    
+    # 文档投影可视化配置
+    self.create_document_visualization = True  # 是否生成文档级别的2D投影图（显示文档点）
+    self.doc_viz_width = 1200  # 文档可视化宽度（像素）
+    self.doc_viz_height = 800  # 文档可视化高度（像素）
+    self.doc_viz_sample_size = 4000  # 随机采样的文档数量（大数据集时提高性能）
+    
+    # 时间序列分析配置（需要时间戳数据）
+    self.create_time_series = False  # 是否生成主题随时间演变的时序图
+    self.time_series_bins = 20  # 时间间隔的分箱数量
+    self.time_series_top_n = 10  # 显示的顶级主题数量
+    self.time_series_width = 1200  # 时序图宽度（像素）
+    self.time_series_height = 600  # 时序图高度（像素）
+    self.min_time_points = 50  # 启用时序分析所需的最小时间点数量
+    
+    # 动态主题可视化配置
+    self.create_dynamic_topics = False  # 是否生成动态主题演变可视化
+    self.dynamic_topics_count = 8  # 显示的动态主题数量
+    self.normalize_frequency = True  # 是否标准化频率数据（便于比较）
+    
+    # 结果保存配置
+    self.save_topic_info = True  # 是否保存主题详细信息（包括关键词和权重）
+    self.save_representative_docs = True  # 是否保存每个主题的代表性文档
+    self.representative_docs_count = 5  # 每个主题保存的代表性文档数量
+    self.save_detailed_results = True  # 是否保存详细分析结果（包括完整元数据）
 # --- BERTopic 模型配置 ---
 class BERTopicConfig:
     """BERTopic模型配置类"""
